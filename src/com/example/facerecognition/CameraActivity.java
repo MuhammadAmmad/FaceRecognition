@@ -29,7 +29,8 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
                 case LoaderCallbackInterface.SUCCESS: 
                 {
                 	Log.i(TAG, "OpenCV loaded successfully");
-                    //System.loadLibrary("face_recognition");
+                	mOpenCvCameraView.enableView();
+                    System.loadLibrary("face_recognition");
                 } break;
                 default:
                 {
@@ -84,6 +85,7 @@ public class CameraActivity extends Activity implements CvCameraViewListener2{
 	@Override
 	public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
 		mRgba = inputFrame.rgba();
-		return mRgba;
+		mGray = inputFrame.gray();
+		return mGray;
 	}
 }
